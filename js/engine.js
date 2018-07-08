@@ -22,11 +22,24 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
+        deck = doc.createElement('div'),
+        scoreEle = doc.createElement('p'),
+        livesEle = doc.createElement('div'),
         lastTime;
 
     canvas.width = 505;
     canvas.height = 606;
+    deck.id = 'deck';
+    scoreEle.id = 'score';
+    livesEle.id = 'lives';
+    deck.appendChild(scoreEle);
+    deck.appendChild(livesEle);     
+    document.body.appendChild(deck);
     doc.body.appendChild(canvas);
+    window.scoreEle = scoreEle;
+    window.livesEle = livesEle;
+
+    scoreEle.innerText = 'score: 0';
 
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
@@ -137,7 +150,7 @@ var Engine = (function(global) {
                 ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
             }
         }
-
+        
         renderEntities();
     }
 
@@ -173,7 +186,8 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/heart.png'
     ]);
     Resources.onReady(init);
 

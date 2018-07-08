@@ -41,6 +41,8 @@ let Player = function() {
     this.sprite = 'images/char-boy.png';
     this.x = 202;
     this.y = 395;
+    this.score = 0;
+    this.lives = 3;
 }
 
 Player.prototype.update = function(x = this.x, y = this.y) {
@@ -50,6 +52,11 @@ Player.prototype.update = function(x = this.x, y = this.y) {
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    let heartImg = Resources.get('images/heart.png');
+    livesEle.innerHTML = '';
+    for(let i=0; i<this.lives; i++){
+        livesEle.appendChild(heartImg.cloneNode());
+    }
 }
 
 Player.prototype.handleInput = function(key) {
@@ -62,13 +69,29 @@ Player.prototype.handleInput = function(key) {
 }
 
 Player.prototype.win = function() {
+    this.score += 100;
     this.update(202, 395);
+    updateDeck(this.lives, this.score);
 }
 
 Player.prototype.lose = function() {
-    this.update(202, 395);
+    this.lives--;
+    if(this.lives === 0){
+        gameOver();
+    }
+    else{
+        this.update(202, 395);
+    }
 }
 
+function updateDeck(lives, score) {
+    scoreEle.innerText = `score: ${score}`;
+}
+
+function gameOver() {
+    document.querySelector('canvas').remove();
+    deck.remove();
+}
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player

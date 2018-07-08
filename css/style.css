@@ -1,3 +1,32 @@
 body {
     text-align: center;
 }
+
+#deck {
+    margin-bottom: -50px;
+    width: 57%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+}
+
+#score {
+    text-align: left;
+    width: 25%;
+    display: inline-block;
+}
+
+#lives {
+    text-align: right;
+    width: 74%;
+    display: inline-block;
+    line-height: 50px;
+}
+
+#lives img {
+    margin-bottom: -20px;
+    width: 30px;
+    margin-left: 3px;
+}
