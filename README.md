@@ -1,6 +1,25 @@
 frontend-nanodegree-arcade-game
 ===============================
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+![the game](images/screenshot.png)
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+Classic Arcade Game is part of Udacity front-end nanodegree projects which brings focus on object oriented programming and its practices.
+
+Play the game live here: https://i-mw.github.io/arcade-game
+
+## Table of Contents
+
+* [Game Logic](#game-logic)
+* [Code Dependencies](#code-dependencies)
+* [Contributing](contributing)
+
+## Game Logic
+* The player starts with 3 lives and 0 score
+* Game win logic: the player crosses all the bugs untouched and reaches water. That adds 100 points to the player score
+* Game lose logic: when the player is hit by one of the bugs. That deduct one life from him. If the player has more lives, he is reset to his start positions. If the player has no more lives -lives = 0- game ends and the player is shown his final score.
+
+## Code Dependencies
+The game depends on no outer libraries.
+
+## contributing
+As this project is part of a program and meant only for personal improvement, Its not open for contribution. But you can refer to a feature or a bug in Issues section.
