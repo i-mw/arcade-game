@@ -77,7 +77,7 @@ Player.prototype.win = function() {
 Player.prototype.lose = function() {
     this.lives--;
     if(this.lives === 0){
-        gameOver();
+        gameOver(this.score);
     }
     else{
         this.update(202, 395);
@@ -88,9 +88,49 @@ function updateDeck(lives, score) {
     scoreEle.innerText = `score: ${score}`;
 }
 
-function gameOver() {
+function gameOver(score) {
     document.querySelector('canvas').remove();
     deck.remove();
+
+    let board = document.createElement('div');
+    let restart = document.createElement('div');
+    let results = document.createElement('div');
+
+    board.id = 'board';
+    board.appendChild(restart);
+    board.insertAdjacentHTML('beforeend','<div></div>')
+    board.appendChild(results);
+
+    // restart.innerHTML = '<p>Game Over</p>';
+    let restartIco = Resources.get('images/restart.ico');
+    // let restartWords = document.createElement('p');
+    // restartWords.innerText = 'Play Again';
+    restart.appendChild(restartIco);
+    // restart.appendChild(restartWords);
+    
+    let newScore = document.createElement('p');
+    newScore.innerText = score;
+
+    if(!window.localStorage) {
+        results.innerHTML = '<p>Your Score:</p>';
+        results.appendChild(newScore);
+    }
+    else {
+        if(!window.localStorage.topScore || score > window.localStorage.topScore) {
+            window.localStorage.topScore = score;
+            results.innerHTML = '<p>New Top Score:</p>';
+            results.appendChild(newScore);
+        }
+        else {
+            results.innerHTML = '<p>Your Score:</p>';
+            results.appendChild(newScore);
+            results.insertAdjacentHTML('beforeend', '<p>Top Score:</p>');
+            results.insertAdjacentHTML('beforeend','<p>'+window.localStorage.topScore+'</p>');
+            // results.appendChild(document.createElement('p').appendChild(document.createTextNode(window.localStorage.topScore)));
+        }
+    }
+    document.body.appendChild(board);
+
 }
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies

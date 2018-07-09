@@ -1,3 +1,9 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     text-align: center;
 }
@@ -9,7 +15,6 @@ body {
     margin-left: auto;
     padding-left: 10px;
     padding-right: 10px;
-    box-sizing: border-box;
 }
 
 #score {
@@ -29,4 +34,47 @@ body {
     margin-bottom: -20px;
     width: 30px;
     margin-left: 3px;
+}
+
+#board {
+    width: 505px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 240px;
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+    color: grey;
+}
+
+#board div {
+    display: inline-block;
+    padding: 20px;
+}
+
+#board div:first-child {
+    width: 38%;
+    vertical-align: middle;
+
+}
+
+#board div:nth-child(2){
+    border: 1px solid grey;
+    padding: 0;
+    width: 2px;
+    height: 95px;
+    vertical-align: middle;
+}
+
+#board div:last-child {
+    width: 60%;
+    vertical-align: middle;
+}
+
+#board div:first-child img {
+    width: 30px;
+    vertical-align: middle;
+}
+
+#board div:last-child p {
+    margin-top: 3px
 }
