@@ -18,12 +18,14 @@ var Engine = (function(global) {
      * create the canvas element, grab the 2D context for that canvas
      * set the canvas elements height/width and add it to the DOM.
      */
+    
     var doc = global.document,
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
         deck = doc.createElement('div'),
         scoreEle = doc.createElement('p'),
+        resetBut = doc.createElement('div'),        
         livesEle = doc.createElement('div'),
         lastTime;
 
@@ -31,16 +33,23 @@ var Engine = (function(global) {
     canvas.height = 606;
     deck.id = 'deck';
     scoreEle.id = 'score';
+    resetBut.id = 'reset';
     livesEle.id = 'lives';
     deck.appendChild(scoreEle);
-    deck.appendChild(livesEle);     
-    document.body.appendChild(deck);
-    doc.body.appendChild(canvas);
+    deck.appendChild(resetBut);
+    deck.appendChild(livesEle);  
+    // console.log(doc.getElementById('container'));
+    document.getElementById('container').appendChild(deck);
+    doc.getElementById('container').appendChild(canvas);
+
+    window.resetBut = resetBut;
     window.scoreEle = scoreEle;
     window.livesEle = livesEle;
 
     scoreEle.innerText = 'score: 0';
+    
 
+    // debugger
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
      */
@@ -76,6 +85,10 @@ var Engine = (function(global) {
      * game loop.
      */
     function init() {
+        resetBut.appendChild(Resources.get('images/restart.ico'));
+        resetBut.addEventListener('click', resetCanvas);
+
+
         reset();
         lastTime = Date.now();
         main();
@@ -197,4 +210,5 @@ var Engine = (function(global) {
      * from within their app.js files.
      */
     global.ctx = ctx;
+    global.init = init;
 })(this);

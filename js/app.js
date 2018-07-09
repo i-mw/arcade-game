@@ -52,6 +52,7 @@ Player.prototype.update = function(x = this.x, y = this.y) {
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    // resetBut.appendChild(Resources.get('images/restart.ico'));
     let heartImg = Resources.get('images/heart.png');
     livesEle.innerHTML = '';
     for(let i=0; i<this.lives; i++){
@@ -89,8 +90,8 @@ function updateDeck(lives, score) {
 }
 
 function gameOver(score) {
-    document.querySelector('canvas').remove();
-    deck.remove();
+    document.querySelector('canvas').classList.add('hidden');
+    deck.classList.add('hidden');
 
     let board = document.createElement('div');
     let restart = document.createElement('div');
@@ -102,7 +103,7 @@ function gameOver(score) {
     board.appendChild(results);
 
     // restart.innerHTML = '<p>Game Over</p>';
-    let restartIco = Resources.get('images/restart.ico');
+    let restartIco = Resources.get('images/restart.ico').cloneNode();
     // let restartWords = document.createElement('p');
     // restartWords.innerText = 'Play Again';
     restart.appendChild(restartIco);
@@ -129,8 +130,23 @@ function gameOver(score) {
             // results.appendChild(document.createElement('p').appendChild(document.createTextNode(window.localStorage.topScore)));
         }
     }
-    document.body.appendChild(board);
+    document.getElementById('container').appendChild(board);
 
+    restartIco.addEventListener('click',resetCanvas);
+    // debugger
+}
+
+function resetCanvas(){
+    if(document.getElementById('board')){
+        document.getElementById('board').remove()
+    };
+    player.score = 0;
+    player.lives = 3;
+    player.update(202, 395);
+    updateDeck(player.lives, player.score);
+    document.querySelector('canvas').classList.remove('hidden');
+    deck.classList.remove('hidden');
+    init();
 }
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
