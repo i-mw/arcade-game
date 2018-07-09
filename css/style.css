@@ -20,6 +20,11 @@ body {
     position: relative;
 }
 
+/*
+*
+*upper deck
+*
+*/
 #upper-deck {
     margin-bottom: -50px;
     width: 505px;
@@ -61,6 +66,11 @@ body {
     margin-left: 3px;
 }
 
+/*
+*
+*game over board
+*
+*/
 #game-over-board {
     width: 505px;
     margin-right: auto;

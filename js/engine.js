@@ -85,6 +85,7 @@ var Engine = (function(global) {
      * game loop.
      */
     function init() {
+        //listen for a reset
         resetBut.appendChild(Resources.get('images/restart.ico'));
         resetBut.addEventListener('click', resetCanvas);
 
