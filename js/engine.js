@@ -23,7 +23,7 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
-        deck = doc.createElement('div'),
+        upperDeck = doc.createElement('div'),
         scoreEle = doc.createElement('p'),
         resetBut = doc.createElement('div'),        
         livesEle = doc.createElement('div'),
@@ -31,17 +31,18 @@ var Engine = (function(global) {
 
     canvas.width = 505;
     canvas.height = 606;
-    deck.id = 'deck';
+    upperDeck.id = 'upper-deck';
     scoreEle.id = 'score';
     resetBut.id = 'reset';
     livesEle.id = 'lives';
-    deck.appendChild(scoreEle);
-    deck.appendChild(resetBut);
-    deck.appendChild(livesEle);  
-    // console.log(doc.getElementById('container'));
-    document.getElementById('container').appendChild(deck);
+    upperDeck.appendChild(scoreEle);
+    upperDeck.appendChild(resetBut);
+    upperDeck.appendChild(livesEle);  
+
+    document.getElementById('container').appendChild(upperDeck);
     doc.getElementById('container').appendChild(canvas);
 
+    window.upperDeck = upperDeck;
     window.resetBut = resetBut;
     window.scoreEle = scoreEle;
     window.livesEle = livesEle;
@@ -49,7 +50,6 @@ var Engine = (function(global) {
     scoreEle.innerText = 'score: 0';
     
 
-    // debugger
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
      */

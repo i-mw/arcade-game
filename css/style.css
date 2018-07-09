@@ -20,7 +20,7 @@ body {
     position: relative;
 }
 
-#deck {
+#upper-deck {
     margin-bottom: -50px;
     width: 505px;
     margin-right: auto;
@@ -61,7 +61,7 @@ body {
     margin-left: 3px;
 }
 
-#board {
+#game-over-board {
     width: 505px;
     margin-right: auto;
     margin-left: auto;
@@ -71,18 +71,18 @@ body {
     color: grey;
 }
 
-#board div {
+#game-over-board div {
     display: inline-block;
     padding: 40px;
 }
 
-#board div:first-child {
+#game-over-board div:first-child {
     width: 38%;
     vertical-align: middle;
 
 }
 
-#board div:nth-child(2){
+#game-over-board div:nth-child(2){
     border: 1px solid grey;
     padding: 0;
     width: 2px;
@@ -90,16 +90,16 @@ body {
     vertical-align: middle;
 }
 
-#board div:last-child {
+#game-over-board div:last-child {
     width: 60%;
     vertical-align: middle;
 }
 
-#board div:first-child img {
+#game-over-board div:first-child img {
     width: 30px;
     vertical-align: middle;
 }
 
-#board div:last-child p {
+#game-over-board div:last-child p {
     margin-top: 3px
 }

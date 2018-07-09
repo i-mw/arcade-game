@@ -6,8 +6,8 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
+    this.x = -101;    
     let randomY = ((Math.ceil(Math.random() * 3)) * 83) - 20;
-    this.x = -101;
     this.y = randomY;
     this.speed = (Math.random() * 350) + 100;
 };
@@ -52,7 +52,7 @@ Player.prototype.update = function(x = this.x, y = this.y) {
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    // resetBut.appendChild(Resources.get('images/restart.ico'));
+
     let heartImg = Resources.get('images/heart.png');
     livesEle.innerHTML = '';
     for(let i=0; i<this.lives; i++){
@@ -72,7 +72,7 @@ Player.prototype.handleInput = function(key) {
 Player.prototype.win = function() {
     this.score += 100;
     this.update(202, 395);
-    updateDeck(this.lives, this.score);
+    updateUpperDeck(this.lives, this.score);
 }
 
 Player.prototype.lose = function() {
@@ -85,29 +85,25 @@ Player.prototype.lose = function() {
     }
 }
 
-function updateDeck(lives, score) {
+function updateUpperDeck(lives, score) {
     scoreEle.innerText = `score: ${score}`;
 }
 
 function gameOver(score) {
     document.querySelector('canvas').classList.add('hidden');
-    deck.classList.add('hidden');
+    upperDeck.classList.add('hidden');
 
-    let board = document.createElement('div');
+    let gameOverBoard = document.createElement('div');
     let restart = document.createElement('div');
     let results = document.createElement('div');
 
-    board.id = 'board';
-    board.appendChild(restart);
-    board.insertAdjacentHTML('beforeend','<div></div>')
-    board.appendChild(results);
+    gameOverBoard.id = 'game-over-board';
+    gameOverBoard.appendChild(restart);
+    gameOverBoard.insertAdjacentHTML('beforeend','<div></div>')
+    gameOverBoard.appendChild(results);
 
-    // restart.innerHTML = '<p>Game Over</p>';
     let restartIco = Resources.get('images/restart.ico').cloneNode();
-    // let restartWords = document.createElement('p');
-    // restartWords.innerText = 'Play Again';
     restart.appendChild(restartIco);
-    // restart.appendChild(restartWords);
     
     let newScore = document.createElement('p');
     newScore.innerText = score;
@@ -127,25 +123,23 @@ function gameOver(score) {
             results.appendChild(newScore);
             results.insertAdjacentHTML('beforeend', '<p>Top Score:</p>');
             results.insertAdjacentHTML('beforeend','<p>'+window.localStorage.topScore+'</p>');
-            // results.appendChild(document.createElement('p').appendChild(document.createTextNode(window.localStorage.topScore)));
         }
     }
-    document.getElementById('container').appendChild(board);
+    document.getElementById('container').appendChild(gameOverBoard);
 
     restartIco.addEventListener('click',resetCanvas);
-    // debugger
 }
 
 function resetCanvas(){
-    if(document.getElementById('board')){
-        document.getElementById('board').remove()
+    if(document.getElementById('game-over-board')){
+        document.getElementById('game-over-board').remove()
     };
     player.score = 0;
     player.lives = 3;
     player.update(202, 395);
-    updateDeck(player.lives, player.score);
+    updateUpperDeck(player.lives, player.score);
     document.querySelector('canvas').classList.remove('hidden');
-    deck.classList.remove('hidden');
+    upperDeck.classList.remove('hidden');
     init();
 }
 // Now instantiate your objects.
