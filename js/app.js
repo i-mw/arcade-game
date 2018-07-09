@@ -29,7 +29,7 @@ Enemy.prototype.update = function(dt) {
         this.x += this.speed * dt;
     }
 
-    if(this.y === player.y && this.x + 101 >= player.x + 25 && this.x <= player.x + 76) {
+    if(this.y === player.y && this.x + 101 >= player.x + 40 && this.x <= player.x + 61) {
         player.lose();
     }
 };
@@ -181,8 +181,6 @@ function resetCanvas(){
 // Place the player object in a variable called player
 let allEnemies = [new Enemy(), new Enemy(), new Enemy()];
 let player = new Player();
-
-//allEnemies.forEach(function(enemy){enemy.update(); enemy.render();});
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
