@@ -9,9 +9,21 @@ Play the game live here: https://i-mw.github.io/arcade-game
 
 ## Table of Contents
 
+* [How to play/run](#how-to-playrun)
+* [Hot to run locally](#how-to-run-locally)
 * [Game Logic](#game-logic)
 * [Code Dependencies](#code-dependencies)
 * [Contributing](contributing)
+
+## How to play/run
+The game/code execution is triggered by keyboard arrow clicks.
+
+## How to run locally
+To run this code locally, download the whole repository code using the `Download` button above.
+Or clone it using command line interface:
+```
+git clone https://github.com/i-mw/arcade-game.git
+```
 
 ## Game Logic
 * The player starts with 3 lives and 0 score
@@ -21,5 +33,5 @@ Play the game live here: https://i-mw.github.io/arcade-game
 ## Code Dependencies
 The game depends on no outer libraries.
 
-## contributing
+## Contributing
 As this project is part of a program and meant only for personal improvement, Its not open for contribution. But you can refer to a feature or a bug in Issues section.
